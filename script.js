@@ -1,19 +1,26 @@
-//your JS code here. If required.
+
+
+// Function to simulate delay
 function wait(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+// Async function to display message after delay
 async function displayMessage() {
-	const text = documnet.getElementById("text").value;
-	const delay = Number(document.getElementById("delay").value);
-	const output = document.getElementById("output");
+  const text = document.getElementById("text").value;
+  const delay = Number(document.getElementById("delay").value);
+  const output = document.getElementById("output");
 
-output.textContent = "";
+  output.textContent = ""; // clear previous output
 
-if (!text || inNaN(delay) || delay < 0){
-	output.textContent = "please enter valid text and delay.";
-	return;
+  if (!text || isNaN(delay) || delay < 0) {
+    output.textContent = "Please enter valid text and delay.";
+    return;
+  }
+
+  await wait(delay); // wait for given delay
+  output.textContent = text; // show message
 }
-await wait(delay);
-output.textContect = text;
-}
-document.getElementById("btn").addEventListener("click",displayMessage);
+
+// Attach event listener to button
+document.getElementById("btn").addEventListener("click", displayMessage);
